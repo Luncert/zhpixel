@@ -5,7 +5,7 @@ from PIL import Image
 # 配置
 input_dir = "glyphs_pixelated"
 output_file = "dist/glyphs_pixelated_combined.png"
-images_per_row = 100  # 每行图片数量，可调整
+images_per_row = 128  # 每行图片数量，可调整
 
 
 def main():
@@ -21,9 +21,9 @@ def main():
     first_img = Image.open(os.path.join(input_dir, files[0]))
     w, h = first_img.size
 
-    rows = (total + images_per_row - 1) // images_per_row
+    # rows = (total + images_per_row - 1) // images_per_row
     combined_w = images_per_row * w
-    combined_h = rows * h
+    combined_h = combined_w
 
     combined_img = Image.new("RGBA", (combined_w, combined_h), (0, 0, 0, 0))
 
